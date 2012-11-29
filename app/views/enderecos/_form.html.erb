@@ -1,0 +1,55 @@
+﻿<%= form_for(@endereco) do |f| %>
+  <% if @endereco.errors.any? %>
+    <div id="error_explanation" align='center'>
+      <h2><%= pluralize(@endereco.errors.count, "erros") %> impediram que este endereço fosse salvo:</h2>
+
+      <ul>
+      <% @endereco.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :nome, "Nome (ex. Casa de praia) - " %></div>
+    <%= f.text_field :nome, :maxlength=>15 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :cep, "CEP (use somente números) - " %></div>
+    <%= f.text_field :cep, :maxlength=>8 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :logradouro, "Logradouro (nome de rua/avenida) - " %></div>
+    <%= f.text_field :logradouro, :maxlength=>20 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :numero, "Número - " %></div>
+    <%= f.text_field :numero, :maxlength=>4 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :complemento, "Complemento (ex. Apto. 101) - " %></div>
+    <%= f.text_field :complemento, :maxlength=>15 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :info_ref, "Informação de referência - " %></div>
+    <%= f.text_field :info_ref, :maxlength=>20 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :bairro, "Bairro - " %></div>
+    <%= f.text_field :bairro, :maxlength=>15 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :cidade, "Cidade - " %></div>
+    <%= f.text_field :cidade, :maxlength=>15 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><font color='#cfc'>________________</font><%= f.label :estado %></div>
+    <%= f.select :estado, ([["AC-Acre","AC-Acre"],["AL-Alagoas","AL-Alagoas"],["AM-Amazonas","AM-Amazonas"],["AP-Amapa","AP-Amapa"],["BA-Bahia","BA-Bahia"],["CE-Ceara","CE-Ceara"],["DF-Distrito Federal","DF-Distrito Federal"],["ES-Espirito Santo","ES-Espirito Santo"],
+		["GO-Goias","GO-Goias"],["MA-Maranhao","MA-Maranhao"],["MG-Minas Gerais","MG-Minas Gerais"],["MS-Mato Grosso de Sul","MS-Mato Grosso do Sul"],["MT-Mato Grosso","MT-Mato Grosso"],["PA-Para","PA-Para"],["PB-Paraiba","PB-Paraiba"],["PE-Pernambuco","PE-Pernambuco"],["PI-Piaui","PI-Piaui"],["PR-Parana","PR-Parana"],
+		["RJ-Rio de Janeiro","RJ-Rio de Janeiro"],["RN-Rio Grande do Norte","RN-Rio Grande do Norte"],["RO-Rondonia","RO-Rondonia"],["RR-Roraima","RR-Roraima"],["RS-Rio Grande do Sul","RS-Rio Grande do Sul"],["SC-Santa Catarina","SC-Santa Catarina"],["SE-Sergipe","SE-Sergipe"],["SP-Sao Paulo","SP-Sao Paulo"],["TO-Tocantins","TO-Tocantins"]]) %>
+  </div>
+  <div class="actions">
+    <input type='submit' value='Enviar' %>
+  </div>
+<% end %>

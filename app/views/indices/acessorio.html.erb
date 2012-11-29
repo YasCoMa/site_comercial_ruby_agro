@@ -1,0 +1,27 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<div id='titulo' align='center'>Produtos disponíveis em Acessórios</div>
+<br />
+<br />
+<div id='promo' align='center'>
+    
+	<div id='tipo_prod'>
+		
+		<% @ace.each do |acessorio| %>
+		    <div id='unit'>
+				<div id='info'>Nome: </div> <div id='info2'><%= acessorio.nome %></div>
+				<div id='info'>Tamanho: </div> <div id='info2'><%= acessorio.tamanho %></div>
+				<div id='info'>Tipo: </div> <div id='info2'><%= acessorio.tipo_ace %></div>
+				<div id='info'>Preço: </div> <div id='info2'><%= acessorio.preco %></div>
+				<div id='info'>Quantidade: </div> <div id='info2'><%= acessorio.quant_esto %></div>
+				
+				<%= link_to 'Comprar', "/add_cart/#{acessorio.id}" %> <br />
+				
+			</div>
+		<% end %>
+		
+		<p>
+    </div>
+</div>	

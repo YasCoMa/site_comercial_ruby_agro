@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @pagamento.tipo %>
+</p>
+
+<p>
+  <b>Bandeira card:</b>
+  <%= @pagamento.bandeira_card %>
+</p>
+
+<p>
+  <b>Nome card:</b>
+  <%= @pagamento.nome_card %>
+</p>
+
+<p>
+  <b>Numero card:</b>
+  <%= @pagamento.numero_card %>
+</p>
+
+<p>
+  <b>Validade card:</b>
+  <%= @pagamento.validade_card %>
+</p>
+
+<p>
+  <b>Codsecure card:</b>
+  <%= @pagamento.codSecure_card %>
+</p>
+
+<p>
+  <b>Num parcela card:</b>
+  <%= @pagamento.num_parcela_card %>
+</p>
+
+
+<%= link_to 'Edit', edit_pagamento_path(@pagamento) %> |
+<%= link_to 'Back', pagamentos_path %>

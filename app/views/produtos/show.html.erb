@@ -1,0 +1,75 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<br />
+<br />
+<font id='titulo_form'>Veja as informações deste produto:</font>
+<br />
+<br />
+<br />
+
+<div id='dados'>
+
+	<p>
+	  <b>Nome:</b>
+	  <%= @produto.nome %>
+	
+	  <b> | Preço:</b>
+	  <%= @produto.preco %>
+	
+	  <b> | Descrição:</b>
+	  <%= @produto.descricao %>
+	</p>
+
+	<p>
+	  <b>Quantidade em estoque:</b>
+	  <%= @produto.quant_esto %>
+	
+	  <b> | Tipo de produto:</b>
+	  <%= @produto.tipo_prod %>
+	</p>
+	
+	<% if @produto.tipo_prod=='alimento' %> 
+		<p>
+		  <b>Marca:</b>
+		  <%= @produto.marca %>
+		
+		  <b> | Peso:</b>
+		  <%= @produto.peso %>
+		
+		  <b> | Tipo de animal:</b>
+		  <%= @produto.tipo_animal %>
+		</p>
+	<% end %>
+	
+	<% if @produto.tipo_prod=='medicamento' %> 
+		<p>
+		  <b>Tipo med:</b>
+		  <%= @produto.tipo_med %>
+		
+		  <b> | Dosagem:</b>
+		  <%= @produto.dosagem %>
+		
+		  <b> | Modo de administração:</b>
+		  <%= @produto.tipo_adm %>
+		</p>
+	<% end %>
+	
+	<% if @produto.tipo_prod=='acessorio' %>
+		<p>
+		  <b>Tamanho:</b>
+		  <%= @produto.tamanho %>
+		</p>
+
+		<p>
+		  <b>Tipo ace:</b>
+		  <%= @produto.tipo_ace %>
+		</p>
+	<% end %>
+
+	<%= link_to 'Editar dados deste produto', edit_produto_path(@produto) %> |
+	<%= link_to 'Voltar para todos os produtos', produtos_path %>
+	<br />
+	<br />
+</div>

@@ -1,0 +1,83 @@
+﻿<%= form_for(@produto) do |f| %>
+  <% if @produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto.errors.count, "erros") %> impediram que este produto fosse salvo:</h2>
+
+      <ul>
+      <% @produto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :nome, "Nome - " %></div>
+    <%= f.text_field :nome, :maxlength => 15 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :preco, "Preço - " %></div>
+    <%= f.text_field :preco, :maxlength => 6 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :descricao, "Descrição - " %></div>
+    <%= f.text_field :descricao, :maxlength => 25 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :quant_esto, "Quantidade em estoque - " %></div>
+    <%= f.number_field :quant_esto, :maxlength => 6 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :tipo_prod, "Tipo de produto - " %></div>
+    <select id='produto_tipo_prod' name='produto[tipo_prod]' onchange="troca_campos()">	
+		<option value='alimento'  >Alimento</option>
+		<option value='medicamento'  >Medicamento</option>
+		<option value='acessorio'  >Acessório</option>
+	</select>
+	
+  </div>
+  <div id='ali' style=''>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :marca, "Marca (Whiskas) - " %></div>
+		<%= f.text_field :marca %>
+	  </div>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :peso, "Peso - " %></div>
+		<%= f.text_field :peso %>
+	  </div>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :tipo_animal, "Tipo de animal - " %></div>
+		<%= f.text_field :tipo_animal %>
+	  </div>
+  </div>	
+  
+  <div id='med' style='display:none'>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :tipo_med, "Tipo de medicamento - " %></div>
+		<%= f.text_field :tipo_med %>
+	  </div>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :dosagem, "Dosagem (ex. 100 ml) - " %></div>
+		<%= f.text_field :dosagem %>
+	  </div>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :tipo_adm, "Modo de administração (ex. injetável) - " %></div>
+		<%= f.text_field :tipo_adm %>
+	  </div>
+  </div>
+  
+  <div id='ace' style='display:none'>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :tamanho, "Tamanho em cm (ex. 40x20x50 (LxAxC)) - " %></div>
+		<%= f.text_field :tamanho %>
+	  </div>
+	  <div class="field">
+		<div id='nome_form_campo'><%= f.label :tipo_ace, "Tipo (ex. casinha) - " %></div>
+		<%= f.text_field :tipo_ace %>
+	  </div>
+  </div>
+  
+  <div class="actions">
+    <input type="submit" value="Enviar" />
+  </div>
+<% end %>

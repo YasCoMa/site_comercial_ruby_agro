@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  preco: 1.5
+  descricao: MyString
+  quant_esto: 1
+  tipo_prod: MyString
+  marca: MyString
+  peso: 1.5
+  tipo_animal: MyString
+  tipo_med: MyString
+  dosagem: MyString
+  tipo_adm: MyString
+  tamanho: MyString
+  tipo_ace: MyString
+
+two:
+  nome: MyString
+  preco: 1.5
+  descricao: MyString
+  quant_esto: 1
+  tipo_prod: MyString
+  marca: MyString
+  peso: 1.5
+  tipo_animal: MyString
+  tipo_med: MyString
+  dosagem: MyString
+  tipo_adm: MyString
+  tamanho: MyString
+  tipo_ace: MyString

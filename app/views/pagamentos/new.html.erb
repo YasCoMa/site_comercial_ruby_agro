@@ -1,0 +1,17 @@
+<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<br />
+<br />
+<font id='titulo_form'>Preencha os dados para efetuar o pagamento:</font>
+<br />
+<br />
+<br />
+<div id='dados' align='center'>
+	<br />
+	<%= render 'form' %>
+
+	<%= link_to 'Ir para pedidos', "/pedidos" %>
+	<br />
+</div>

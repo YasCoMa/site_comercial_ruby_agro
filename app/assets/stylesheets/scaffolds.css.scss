@@ -1,0 +1,147 @@
+
+body {
+  background-color: #fff;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: times new roman, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  background-color: #20B2AA;
+  text-decoration: none;
+  color: #fff;
+  
+  &:hover {
+    color: #20B2AA;
+    background-color: #fff;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+/*.field_with_errors {
+  padding: 2px;
+  background-color: blue;
+  display: table;
+}*/
+
+#error_explanation {
+  width: 450px;
+  border: 2px dashed blue;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  
+  -moz-border-radius: 20px 20px 10px 10px ; 
+  -webkit-border-radius:20px 20px 10px 10px ; 
+  border-radius:20px 20px 10px 10px;
+  
+  h2 {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #009ACD;
+    color: #fff;
+	-moz-border-radius: 20px 20px 0px 0px ; 
+	-webkit-border-radius:20px 20px 0px 0px ; 
+	border-radius:20px 20px 0px 0px;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: circle;
+  }
+}
+
+/* Ajusta a tabela de consulta */
+	div.tabela_consulta {
+		width:700px;
+	    background: #fff;
+		border:2px solid #4682b4;
+		-moz-border-radius: 20px 20px 5px 5px; -webkit-border-radius:20px 20px 5px 5px ; border-radius: 20px 20px 5px 5px ;
+	}
+	
+	div.tabela_consulta table.cabeca_fixa, div.tabela_consulta div.scroll_movel table{
+		width: 600px;
+		border-collapse: collapse;
+	}
+
+	div.tabela_consulta table.cabeca_fixa th, div.tabela_consulta div.scroll_movel table td{
+		white-space:nowrap;
+		border: 1px solid #444;
+		padding: 3px 5px;
+	}
+
+	div.tabela_consulta table.cabeca_fixa th{
+		background: #f0f8ff;
+	}
+
+	div.tabela_consulta div.scroll_movel table td{
+		background:fffaf0;
+	}
+	
+	div.tabela_consulta div.cabeca{
+	    width:550px;
+		overflow: auto;
+	}
+	
+	div.tabela_consulta div.scroll_movel{
+	    width:600px;
+		height: 200px;
+		overflow: auto;
+	}
+
+#tit_ {font-size: 18px; color: #003; border:1px dashed #003; background: #9cc; }
+#nome_campo {font-size: 13px; color: #06c; }
+#autenticacao {width:250px; height:150px; border:2px solid #006; text-align:center; -moz-border-radius: 20px 20px 20px 20px ; -webkit-border-radius:20px 20px 20px 20px ; border-radius:20px 20px 20px 20px ;}
+#link_ {width: 150px; text-decoration: none; font-size:14px ; color: #fff; border:1px dashed #066; background: #066;-moz-border-radius: 30px 30px 30px 30px ; -webkit-border-radius:30px 30px 30px 30px ; border-radius:30px 30px 30px 30px ;}
+
+#nome_form_campo {font-size: 18px; color: #030; float:left}
+input{color:#69C;}
+#titulo_form {font-size: 24px; color: #036; border-top:1px dashed #003; border-bottom:1px dashed #003; background: #0FF; }
+#dados {width:650px;  text-align:left; border:2px solid #660; background: #CFC; text-align:center; -moz-border-radius: 20px 20px 20px 20px ; -webkit-border-radius:20px 20px 20px 20px ; border-radius:20px 20px 20px 20px ;}
+
+.area_pedidos {width:600px; height:700px; overflow:auto; border:2px solid #006; text-align:center; -moz-border-radius: 20px 20px 20px 20px ; -webkit-border-radius:20px 20px 20px 20px ; border-radius:20px 20px 20px 20px ;}
+
+/* Tabelas dos pedidos e itens */
+	/*area_pedidos {
+	    width:600px;
+		height: 500px;
+		overflow: auto;
+	}
+	table.pedido, table.item{
+	    width: 600px;
+		border-collapse: collapse;
+	}
+	table.pedido td{
+	    white-space:nowrap;
+		border: 1px solid #444;
+		padding: 3px 5px;
+		background:#0000CD;
+		color:#D3D3D3;
+	}*/
+	
+#coluna_pedido {white-space:nowrap;  float:left; border: 1px solid #444; padding: 3px 5px; background:#0000CD; color:#D3D3D3;}
+#linha {padding:0; clear:both; width:600px; overflow:auto; white-space:nowrap;}
+#coluna_comum {padding: 3px 5px;  margin-left:5px; float:left; background:fffaf0; border:1px solid #000;}

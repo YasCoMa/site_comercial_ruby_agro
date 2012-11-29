@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  valor_total: 1.5
+  estado: MyString
+  cliente_id: 1
+  endereco_id: 1
+  pagamento_id: 1
+
+two:
+  valor_total: 1.5
+  estado: MyString
+  cliente_id: 1
+  endereco_id: 1
+  pagamento_id: 1

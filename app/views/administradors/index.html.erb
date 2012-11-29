@@ -1,0 +1,29 @@
+<h1>Listing administradors</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Cpf</th>
+    <th>Identidade</th>
+    <th>Senha</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @administradors.each do |administrador| %>
+  <tr>
+    <td><%= administrador.nome %></td>
+    <td><%= administrador.cpf %></td>
+    <td><%= administrador.identidade %></td>
+    <td><%= administrador.senha %></td>
+    <td><%= link_to 'Show', administrador %></td>
+    <td><%= link_to 'Edit', edit_administrador_path(administrador) %></td>
+    <td><%= link_to 'Destroy', administrador, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Administrador', new_administrador_path %>

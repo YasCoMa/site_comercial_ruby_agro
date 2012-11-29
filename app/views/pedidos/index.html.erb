@@ -1,0 +1,239 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<% if session[:tipo_user]=='cliente' %>
+	<div id='lista_pedidos' align='center'>
+		<br />
+		<br />
+		<font id='titulo_form'>Busque seus pedidos pelos seus estados:</font>
+		<br />
+		<br />
+		<br />
+		
+		<div id='menu_estado' >
+			<font style='float:left' color='#fff'>_________</font>
+		    <div style='float:left'><a href='javascript:void(0)' onClick="mostra_pedido_byEstado('aberto')">Aberto</a></div>
+			
+			<font style='float:left' color='#fff'>_________</font>
+			<div style='float:left'><a href='javascript:void(0)' onClick="mostra_pedido_byEstado('pagando')">Pagando</a></div>
+			
+			<font style='float:left' color='#fff'>_________</font>
+			<div style='float:left'><a href='javascript:void(0)' onClick="mostra_pedido_byEstado('entregando')">Entregando</a></div>
+			
+			<font style='float:left' color='#fff'>_________</font>
+			<div style='float:left'><a href='javascript:void(0)' onClick="mostra_pedido_byEstado('fechado')">Fechado</a></div>
+			
+			<font style='float:left' color='#fff'>_________</font>
+			<div style='float:left'><a href='javascript:void(0)' onClick="mostra_pedido_byEstado('all_orders')">Ver todos</a></div>
+			
+		</div>
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<div id='all_orders' align='center' style=''>
+			<font id='titulo_form'>Todos os pedidos:</font>
+			<br />
+			<br />
+
+			<div class='area_pedidos'>
+					<% @pedidos.each do |pedido| %>
+						<div id='linha'>
+							<div id='coluna_pedido'>Número do pedido: <%= pedido.id %></div>
+							<div id='coluna_pedido'>Data: <%= pedido.created_at %></div>
+							<div id='coluna_pedido'>Estágio: <%= pedido.estado %></div>
+							
+							<% valor_tot=0 %>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<% valor_tot+=Produto.find(item.produto_id).preco*item.quantidade %>
+							<% end %>
+							<div id='coluna_pedido'>Total: R$ <%= valor_tot %></div>
+							
+						</div>
+						
+						<div id='itens' >
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<div id='linha'>
+									<div id='coluna_comum'>Nome do produto: <%= Produto.find(item.produto_id).nome %></div>
+									<div id='coluna_comum'>Quantidade: <%= item.quantidade %></div>
+									<div id='coluna_comum'>Sub-valor: <%= Produto.find(item.produto_id).preco*item.quantidade %></div>
+									<% if pedido.estado=='aberto' %>
+										<div id='coluna_comum'><%= link_to 'Editar', edit_item_path(item) %></div>
+										<div id='coluna_comum'><%= link_to 'Excluir', item, confirm: 'Tem certeza que quer excluir este item?', method: :delete %></div>
+									<% end %>
+								</div>
+							<% end %>	
+						</div>
+					<% end %>
+					
+				
+				<br />
+			</div>
+		</div>	
+		
+		
+		<br />
+		<br />
+		<br />
+		
+		
+		<div id='aberto' align='center' style='display:none'>
+			<font id='titulo_form'>Pedidos em aberto:</font>
+			<br />
+			<br />
+
+			<div class='area_pedidos'>
+					<% Pedido.find(:all, :conditions => ["estado='aberto' and cliente_id=?", session[:usuario_id]]).each do |pedido| %>
+						<div id='linha'>
+							<div id='coluna_pedido'>Número do pedido: <%= pedido.id %></div>
+							<div id='coluna_pedido'>Data: <%= pedido.created_at %></div>
+							
+							<% valor_tot=0 %>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<% valor_tot+=Produto.find(item.produto_id).preco*item.quantidade %>
+							<% end %>
+							<div id='coluna_pedido'>Total: R$ <%= valor_tot %></div>
+							<div id='coluna_pedido'><%= link_to 'Finalizar', "/addEndereco" %></div>
+						</div>
+						
+						<div id='itens'>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<div id='linha'>
+									<div id='coluna_comum'>Nome do produto: <%= Produto.find(item.produto_id).nome %></div>
+									<div id='coluna_comum'>Quantidade: <%= item.quantidade %></div>
+									<div id='coluna_comum'>Sub-valor: <%= Produto.find(item.produto_id).preco*item.quantidade %></div>
+									<div id='coluna_comum'><%= link_to 'Editar', edit_item_path(item) %></div>
+									<div id='coluna_comum'><%= link_to 'Excluir', item, confirm: 'Tem certeza que quer excluir este item?', method: :delete %></div>
+								</div>
+							<% end %>	
+						</div>
+					
+					<% end %>
+					
+				<br />
+			</div>
+			
+		</div>
+		
+		
+		<div id='pagando' align='center' style='display:none'>
+			<font id='titulo_form'>Pedidos em processo de pagamento:</font>
+			<br />
+			<br />
+
+			<div class='area_pedidos'>
+					<% Pedido.find(:all, :conditions => ["estado='pagando' and cliente_id=?", session[:usuario_id]]).each do |pedido| %>
+						<div id='linha'>
+							<div id='coluna_pedido'>Número do pedido: <%= pedido.id %></div>
+							<div id='coluna_pedido'>Data: <%= pedido.created_at %></div>
+							
+							<% valor_tot=0 %>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<% valor_tot+=Produto.find(item.produto_id).preco*item.quantidade %>
+							<% end %>
+							<div id='coluna_pedido'>Total: R$ <%= valor_tot %></div>
+						</div>
+							
+						<div id='itens'>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<div id='linha'>
+									<div id='coluna_comum'>Nome do produto: <%= Produto.find(item.produto_id).nome %></div>
+									<div id='coluna_comum'>Quantidade: <%= item.quantidade %></div>
+									<div id='coluna_comum'>Sub-valor: <%= Produto.find(item.produto_id).preco*item.quantidade %></div>
+								</div>
+							<% end %>	
+						</div>
+						
+					<% end %>
+					
+				<br />
+			</div>
+			
+		</div>
+		
+		<div id='entregando' align='center' style='display:none'>
+			<font id='titulo_form'>Pedidos em processo de entrega:</font>
+			<br />
+			<br />
+
+			<div class='area_pedidos'>
+					<% Pedido.find(:all, :conditions => ["estado='entregando'  and cliente_id=?", session[:usuario_id]]).each do |pedido| %>
+						<div id='linha'>
+							<div id='coluna_pedido'>Número do pedido: <%= pedido.id %></div>
+							<div id='coluna_pedido'>Data: <%= pedido.created_at %></div>
+							
+							<% valor_tot=0 %>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<% valor_tot+=Produto.find(item.produto_id).preco*item.quantidade %>
+							<% end %>
+							<div id='coluna_pedido'>Total: R$ <%= valor_tot %></div>
+						</div>
+							
+						<div id='itens'>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<div id='linha'>
+									<div id='coluna_comum'>Nome do produto: <%= Produto.find(item.produto_id).nome %></div>
+									<div id='coluna_comum'>Quantidade: <%= item.quantidade %></div>
+									<div id='coluna_comum'>Sub-valor: <%= Produto.find(item.produto_id).preco*item.quantidade %></div>
+								</div>
+							<% end %>	
+						</div>
+						
+					<% end %>
+				<br />
+			</div>
+			
+		</div>
+		
+		<div id='fechado' align='center' style='display:none'>
+			<font id='titulo_form'>Pedidos completos entregues:</font>
+			<br />
+			<br />
+
+			<div class='area_pedidos'>
+					<% Pedido.find(:all, :conditions => ["estado='fechado' and cliente_id=?", session[:usuario_id]]).each do |pedido| %>
+						<div id='linha'>
+							<div id='coluna_pedido'>Número do pedido: <%= pedido.id %></div>
+							<div id='coluna_pedido'>Data: <%= pedido.created_at %></div>
+							
+							<% valor_tot=0 %>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<% valor_tot+=Produto.find(item.produto_id).preco*item.quantidade %>
+							<% end %>
+							<div id='coluna_pedido'>Total: R$ <%= valor_tot %></div>
+						</div>
+							
+						<div id='itens'>
+							<% Item.find(:all, :conditions => ["pedido_id=?", pedido.id]).each do |item| %>
+								<div id='linha'>
+									<div id='coluna_comum'>Nome do produto: <%= Produto.find(item.produto_id).nome %></div>
+									<div id='coluna_comum'>Quantidade: <%= item.quantidade %></div>
+									<div id='coluna_comum'>Sub-valor: <%= Produto.find(item.produto_id).preco*item.quantidade %></div>
+								</div>
+							<% end %>	
+						</div>
+						
+					<% end %>
+				<br />
+			</div>
+			
+		</div>
+		<!---->
+		<br />
+		<br />
+		<br />
+		<br />
+		
+	</div>
+<% else %>
+	<% if session[:tipo_user]=='admin' %>
+	
+	<% end %>
+
+<% end %>
+	
+<!--
+<%= link_to 'New Pedido', new_pedido_path %>-->

@@ -1,0 +1,23 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<br />
+<font id='tit_'>Identifique-se ou cadastre-se!<br /></font>
+<br />
+<div id='autenticacao'>
+	
+	<%= form_tag "/login" do %>
+		<%= session[:usuario_id] %>
+		<div id='nome_campo'>Login: </div><%= text_field_tag :login %> <br />
+		<div id='nome_campo'>Senha: </div><%= password_field_tag :senha %> <br />
+		<%= submit_tag "Enviar" %>
+	<% end %>
+	<br />
+	<a href="/clientes/new" id="link_">Não sou cadastrado!</a>
+	<br />
+	<br />
+</div>
+
+<br />
+<br />

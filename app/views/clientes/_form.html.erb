@@ -1,0 +1,56 @@
+﻿<%= form_for(@cliente) do |f| %>
+  <% if @cliente.errors.any? %>
+    <div align='center'>  
+		<div id="error_explanation" align='center'>
+			<h2><%= pluralize(@cliente.errors.count, "erros") %> impediram que o cliente fosse salvo:</h2>
+
+			<ul>
+				<% @cliente.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>	
+  <% end %>
+	
+  <br />	
+  <div class="field" align='center'>
+    <div id='nome_form_campo'><%= f.label :nome, "Nome - " %></div>
+    <%= f.text_field :nome, :maxlength => 25 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :cpf, "CPF (somente números) - " %></div>
+    <%= f.text_field :cpf, :maxlength => 11 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :identidade, "Identidade (somente números) - " %></div>
+    <%= f.text_field :identidade, :maxlength => 9 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :sexo, "Sexo - " %></div>
+    <%= f.select :sexo, ([["Masculino","masculino"],["Feminino","feminino"]]) %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :data_nasc, "Data de nascimento - " %></div>
+    <%= f.date_select :data_nasc, :start_year=> 1920, end_year: 2002, order: [:day,:month,:year], use_month_names: ["Janeiro","Fevereiro","Marco","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]  %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :telefone, "Telefone (somente números) - " %></div>
+    <%= f.text_field :telefone, :maxlength => 10 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :email, "E-mail - " %></div>
+    <%= f.text_field :email, :maxlength => 25 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :senha, "Senha - " %></div>
+    <%= f.password_field :senha, :size => 10 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :senha, "Confirmação da senha - " %></div>
+    <%= f.password_field :senha_confirmation, :size => 10 %>
+  </div>
+  <div class="actions">
+    <input type='submit' value="Enviar" />
+  </div>
+<% end %>

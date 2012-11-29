@@ -1,0 +1,92 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<br />
+<br />
+<font id='titulo_form'>Veja aqui suas informações:</font>
+<br />
+<br />
+<br />
+
+<div id='dados'>
+	<p>
+	  <b>Nome:</b>
+	  <%= @cliente.nome %>
+
+	  <b> | Cpf:</b>
+	  <%= @cliente.cpf %>
+	</p>
+
+	<p>
+	  <b>Identidade:</b>
+	  <%= @cliente.identidade %>
+
+	  <b> | Sexo:</b>
+	  <%= @cliente.sexo %>
+
+	  <b> | Data de nascimento:</b>
+	  <%= @cliente.data_nasc %>
+	</p>
+
+	<p>
+	  <b>Telefone:</b>
+	  <%= @cliente.telefone %>
+
+	  <b> | Email:</b>
+	  <%= @cliente.email %>
+
+	  <b> | Senha:</b>
+	  <%= @cliente.senha %>
+	</p>
+
+
+	<%= link_to 'Editar informações', edit_cliente_path(@cliente) %> |
+	<%= link_to 'Ir para página inicial', "/" %>
+	<br />
+	<br />
+</div>
+
+<br />
+<br />
+<font id='titulo_form'>Veja aqui seus endereços cadastrados:</font>
+<br />
+<br />
+
+<div class="tabela_consulta" align="center">
+	<div class='cabeca'>	
+		<table class="cabeca_fixa">
+			<tr>
+				<th>Nome</th> <th>Cep</th> <th>Logradouro</th>  <th>Número</th> <th>Complemento</th>  <th>Info - referência</th> <th>Bairro</th> <th>Cidade</th> <th>Estado</th>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="scroll_movel">
+		<table>
+		<% Endereco.find(:all, :conditions => ["cliente_id=?", session[:usuario_id]]).each do |endereco| %>
+			<tr>
+				<td><%= endereco.nome %></td>
+				<td><%= endereco.cep %></td>
+				<td><%= endereco.logradouro %></td>
+				<td><%= endereco.numero %></td>
+				<td><%= endereco.complemento %></td>
+				<td><%= endereco.info_ref %></td>
+				<td><%= endereco.bairro %></td>
+				<td><%= endereco.cidade %></td>
+				<td><%= endereco.estado %></td>
+				<td><%= link_to 'Editar', edit_endereco_path(endereco) %></td>
+				<td><%= link_to 'Excluir', endereco, confirm: 'Tem certeza que quer excluir este endereço?', method: :delete %></td>
+			</tr>
+		<% end %>
+		
+		</table>
+	</div>
+	
+	<br />
+	<div align='center'>
+		<%= link_to 'Inserir novo endereço', "/enderecos/new" %>
+	</div>
+	<br />
+	
+</div>

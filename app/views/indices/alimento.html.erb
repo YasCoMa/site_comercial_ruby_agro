@@ -1,0 +1,27 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<div id='titulo' align='center'>Produtos disponíveis em Alimentos</div>
+<br />
+<br />
+<div id='promo' align='center'>
+    
+	<div id='tipo_prod'>
+		
+		<% @racoes.each do |alimento| %>
+		    <div id='unit'>
+				<div id='info'>Marca: </div> <div id='info2'><%= alimento.marca %></div>
+				<div id='info'>Peso: </div> <div id='info2'><%= alimento.peso %></div>
+				<div id='info'>Tipo de animal: </div> <div id='info2'><%= alimento.tipo_animal %></div>
+				<div id='info'>Preço: </div> <div id='info2'><%= alimento.preco %></div>
+				<div id='info'>Quantidade: </div> <div id='info2'><%= alimento.quant_esto %></div>
+				
+				<%= link_to 'Comprar', "/add_cart/#{alimento.id}" %> <br />
+				
+			</div>
+		<% end %>
+		
+		<p>
+    </div>
+</div>	

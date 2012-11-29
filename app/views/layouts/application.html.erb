@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Casa do campo - Produtos para agricultura e pecuária</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<%= favicon_link_tag "favicon.ico" %>
+		
+	</head>
+
+	<body>
+		<div id='tudo'>
+		
+		    <div id='conteudo'>
+			
+			    <div id='topo'></div>
+				
+				<div id='meio'>
+					<div id='lateral'>
+						<div id='navegacao'>
+						    <!-- Parte do menu -->		
+						    <ul id="menu"><font face="Curlz MT" align='center' size='4'>Menu principal</font>
+							    <li><a id="a" class="item" href="/" onmouseover="reveza('a')" onmouseout="volta('a')">Página inicial</a>
+								</li>
+								
+								<li><a id="b" class="item" href="/alimentos" onmouseover="reveza('b')" onmouseout="volta('b')">Alimentos</a>
+								</li>
+								
+								<li><a id="i" class="item" href="/medicamentos" onmouseover="reveza('i')" onmouseout="volta('i')">Medimentos</a>
+								</li>
+								
+								<li><a id="j" class="item" href="/acessorios" onmouseover="reveza('j')" onmouseout="volta('j')">Acessórios</a>
+								</li>
+								
+								<% if session[:tipo_user]=='admin' %>
+									<li><a id="c" class="item" href="/produtos" onmouseover="reveza('c')" onmouseout="volta('c')">Gerenciar produtos</a>
+									</li>
+									
+									<li><a id="d" class="item" href="/dados_admin" onmouseover="reveza('d')" onmouseout="volta('d')">Meus dados</a>
+									</li>
+									
+									<li><a id="g" class="item" href="/sair" onmouseover="reveza('g')" onmouseout="volta('g')">Sair</a>
+									</li>
+								<% else %>
+									<% if session[:tipo_user]=='cliente' %>
+										<li><a id="d" class="item" href="/dados_cliente" onmouseover="reveza('d')" onmouseout="volta('d')">Meus dados</a>
+										</li>
+										
+										<li><a id="e" class="item" href="/pedidos" onmouseover="reveza('e')" onmouseout="volta('e')">Meus pedidos</a>
+										</li>
+										
+										<li><a id="h" class="item" href="/sair" onmouseover="reveza('h')" onmouseout="volta('h')">Sair</a>
+										</li>
+									<% else %>
+										<li><a id="f" class="item" href="/autenticacao" onmouseover="reveza('f')" onmouseout="volta('f')">Fazer login/cadastro</a>
+										</li>
+									<% end %>
+								<% end %>	
+							</ul>
+						</div>
+						
+						<br />
+						
+						<div id='web' align='center'>
+							<%= link_to image_tag("imgPerfil_fb_casa-do-campo.jpg") , ""  %>
+							
+							<br />
+							<br />
+							<br />
+							
+							<div id='f' style='float:left'>
+								Curta no <div align='middle'> <%= link_to image_tag("fb_casa-do-campo.jpg") , "https://www.facebook.com/pages/Casa-do-campo-Loja-agropecuária/524853904209049"  %> </div>
+							</div>
+							
+							<div id='t'>
+								Siga-nos no  <div align='middle'><%= link_to image_tag("tt_casa-do-campo.jpg") , "https://www.twitter.com/casa_do_campo_"  %> </div>
+						    </div>
+							
+							
+						</div>
+						
+						<br />
+						
+						<div id='enfeite' align='center'></div>
+					</div>
+					
+					<div id='content_by_rails' align='center'>
+						<%= yield %>
+						<p>
+					</div>
+					
+				</div>
+					<div align='center'>
+						<sub>rtay Systems</sub>
+						<sub> | Для моего отца: Маркос Стефан Мендоса Фазекаш</sub>
+					</div>
+				
+			</div>
+
+		</div>
+	    
+	</body>
+</html>

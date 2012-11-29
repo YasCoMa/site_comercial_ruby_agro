@@ -1,0 +1,58 @@
+﻿/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+/* Estético do documento em geral */
+	body {margin:0px; padding:0;  text-align:center; }
+	#tudo {width: 1000px; height:800; margin:0 auto; text-align:left; }
+	#conteudo {padding: 1px; }
+	#meio {background: #3c0;}
+	
+/* Imagem do cabeçalho */
+    #topo {background-image: url("img_cabeçalho.jpg"); width: 1000px; height:250px; }
+
+/* Parte lateral */
+	#lateral {margin-left:10px; float:left; }
+
+/* Parte do menu e das info de rede social */	
+	#navegacao, #web {width: 200px; height:350px; border:3px solid #060; -moz-border-radius: 20px 20px 20px 20px ; -webkit-border-radius:20px 20px 20px 20px ; border-radius:20px 20px 20px 20px ; }
+	
+/* Arruma a parte onde vai ficar o conteúdo do rails */	
+	#content_by_rails {margin-left:10px; float:left; margin-right:10px; width: 750px; border:2px dashed #6F3; -moz-border-radius: 30px 20px 30px 20px ; -webkit-border-radius:30px 20px 30px 20px ; border-radius:20px 30px 20px 30px ; }
+
+/* Arruma as tags ul e li de navegacao */
+	#menu { list-style-type: none; margin: 0; font: 14px Times New Roman, sans-serif; }
+	#menu li {margin-left: 10; align: center; padding:5px;  }
+	#menu li 
+		/* Estética dos links principais do menu */
+		a.item {display: block; align: center;
+									 padding: 5px 5px 5px 0.5em; 
+									 font-size:18px;
+									 font-weight:bold;
+									 border-left: 10px solid #6F9; 
+									 background-color: #0C0; 
+									 color: #CFF; 
+									 text-decoration: none; 
+									 -moz-border-radius: 0px 20px 20px 0px ; -webkit-border-radius:0px 20px 20px 0px ; border-radius:0px 20px 20px 0px}
+					 
+		a.item_2 {display: block; align: center;
+									 padding: 5px 5px 5px 0.5em; 
+									 font-size:18px;
+									 font-weight:bold;
+									 border-right: 20px solid #6F9; 
+									 background-color: #0C0; 
+									 color: #CFF; 
+									 text-decoration: none; 
+									 -moz-border-radius: 0px 20px 20px 0px ; -webkit-border-radius:0px 20px 20px 0px ; border-radius:0px 20px 20px 0px}
+/* Imagem do cabeçalho */
+    #enfeite {background-image: url("caipira_enfeite.jpg"); width: 120px; height:190px; }

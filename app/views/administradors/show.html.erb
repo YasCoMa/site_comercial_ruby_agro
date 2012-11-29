@@ -1,0 +1,36 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<br />
+<br />
+<font id='titulo_form'>Veja aqui suas informações:</font>
+<br />
+<br />
+<br />
+
+<div id='dados'>
+	<p>
+	  <b>Nome:</b>
+	  <%= @administrador.nome %>
+	
+	  <b> | Cpf:</b>
+	  <%= @administrador.cpf %>
+	</p>
+
+	<p>
+	  <b>Identidade:</b>
+	  <%= @administrador.identidade %>
+	
+	  <b> | Senha:</b>
+	  <%= @administrador.senha %>
+	</p>
+
+	<div align='center'>
+		<%= link_to 'Editar informações', edit_administrador_path(@administrador) %> |
+		<%= link_to 'Página inicial', "/" %>
+	</div>
+	
+	<br />
+	<br />
+</div>

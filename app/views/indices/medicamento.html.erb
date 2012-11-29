@@ -1,0 +1,27 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<div id='titulo' align='center'>Produtos disponíveis em Medicamentos</div>
+<br />
+<br />
+<div id='promo' align='center'>
+    
+	<div id='tipo_prod'>
+		
+		<% @med.each do |medicamento| %>
+		    <div id='unit'>
+				<div id='info'>Nome: </div> <div id='info2'><%= medicamento.nome %></div>
+				<div id='info'>Tipo: </div> <div id='info2'><%= medicamento.tipo_med %></div>
+				<div id='info'>Administração: </div> <div id='info2'><%= medicamento.tipo_adm %></div>
+				<div id='info'>Preço: </div> <div id='info2'><%= medicamento.preco %></div>
+				<div id='info'>Quantidade: </div> <div id='info2'><%= medicamento.quant_esto %></div>
+				
+				<%= link_to 'Comprar', "/add_cart/#{medicamento.id}" %> <br />
+				
+			</div>
+		<% end %>
+		
+		<p>
+    </div>
+</div>	

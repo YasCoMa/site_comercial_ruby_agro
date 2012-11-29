@@ -1,0 +1,59 @@
+﻿<%= form_for(@pagamento) do |f| %>
+  <% if @pagamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pagamento.errors.count, "erros") %> impediram que os dados do pagamento fossem salvos :</h2>
+
+      <ul>
+      <% @pagamento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+		<div id='nome_form_campo'><%= f.label :tipo, "Tipo de pagamento - " %></div>
+		<input type='radio' id='pagamento_tipo' name='pagamento[tipo]' value='boleto' checked onClick="showDiv('cartao_cre', false); showDiv('cartao_deb', false);" /> Boleto bancário
+		<input type='radio' id='pagamento_tipo' name='pagamento[tipo]' value='cartao_credito' onClick="showDiv('cartao_cre', true); showDiv('cartao_deb', true);" /> Cartão de crédito
+		<input type='radio' id='pagamento_tipo' name='pagamento[tipo]' value='cartao_debito' onClick="showDiv('cartao_cre', false); showDiv('cartao_deb', true);" /> Cartão de dédito
+	</div>
+  
+	<div id='cartao_deb'>
+		<div class="field">
+			<div id='nome_form_campo'><%= f.label :bandeira_card, "Bandeira do cartão - " %></div>
+			<%= f.select :bandeira_card, ([["Master Card","master_card"],["Visa","visa"], ["American Express","american_express"] ]) %>
+		</div>
+		
+		<div class="field">
+			<div id='nome_form_campo'><%= f.label :nome_card, "Nome impresso no cartão - " %></div>
+			<%= f.text_field :nome_card, :maxlength => 25 %>
+		</div>
+		
+		<div class="field">
+			<div id='nome_form_campo'><%= f.label :numero_card, "Número do cartão (use apenas números) - " %></div>
+			<%= f.text_field :numero_card, :maxlength => 16, :size=> 16 %>
+		</div>
+	  
+		<div class="field">
+			<div id='nome_form_campo'><%= f.label :validade_card, "Validade do cartão (ex. 05/2014) - " %></div>
+			<%= f.text_field :validade_card, :maxlength => 7, :size=> 7 %>
+		</div>
+	  
+		<div class="field">
+			<div id='nome_form_campo'><%= f.label :codSecure_card, "Código de segurança (veja atrás) - " %></div>
+			<%= f.text_field :codSecure_card, :maxlength => 3, :size=> 3 %>
+		</div>
+	</div>
+	
+	<div id='cartao_cre'>
+		<div class="field">
+			<div id='nome_form_campo'><%= f.label :num_parcela_card, "Número de parcelas: " %></div>
+			<%= f.select :num_parcela_card , ([["1","1"],["2","2"], ["3","3"], ["4","4"] ]) %>
+		</div>
+	</div>
+	
+    <div class="actions">
+		<input type='submit' value="Enviar" />
+    </div>
+	
+<% end %>

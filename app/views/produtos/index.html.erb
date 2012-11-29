@@ -1,0 +1,141 @@
+﻿<!-- ......................................................Alimento................................................ -->
+
+<br />
+<br />
+<font id='titulo_form'>Ver todos os produtos do tipo alimento:</font>
+<br />
+<br />
+<br />
+
+<div class="tabela_consulta" align="center">
+	<div class='cabeca'>	
+		<table class="cabeca_fixa">
+			<tr>
+				<th>Nome</th> <th>Preço</th> <th>Descrição</th>  <th>Quantidade em estoque</th> <th>Tipo de produto</th>  <th>Marca</th> <th>Peso</th> <th>Tipo de animal</th>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="scroll_movel">
+	
+		<table>
+  
+			<% Produto.find(:all, :conditions => ["tipo_prod='alimento'"]).each do |produto| %>
+				<tr>
+					<td><%= produto.nome %></td>
+					<td><%= produto.preco %></td>
+					<td><%= produto.descricao %></td>
+					<td><%= produto.quant_esto %></td>
+					<td><%= produto.tipo_prod %></td>
+					<td><%= produto.marca %></td>
+					<td><%= produto.peso %></td>
+					<td><%= produto.tipo_animal %></td>
+					<td><%= link_to 'Visualizar', produto %></td>
+					<td><%= link_to 'Editar', edit_produto_path(produto) %></td>
+					<td><%= link_to 'Excluir', produto, confirm: 'Tens certeza que deseja excluir este alimento?', method: :delete %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	
+	<br />
+	<br />
+	<br />
+
+</div>
+
+<!-- ......................................................Medicamento................................................ -->
+
+<br />
+<br />
+<font id='titulo_form'>Ver todos os produtos do tipo medicamento:</font>
+<br />
+<br />
+<br />
+
+<div class="tabela_consulta" align="center">
+	<div class='cabeca'>	
+		<table class="cabeca_fixa">
+			<tr>
+				<th>Nome</th> <th>Preço</th> <th>Descrição</th>  <th>Quantidade em estoque</th> <th>Tipo de produto</th>  <th>Tipo de medicamento</th> <th>Dosagem</th> <th>Modo de administração</th>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="scroll_movel">
+	
+		<table>
+  
+			<% Produto.find(:all, :conditions => ["tipo_prod='medicamento'"]).each do |produto| %>
+				<tr>
+					<td><%= produto.nome %></td>
+					<td><%= produto.preco %></td>
+					<td><%= produto.descricao %></td>
+					<td><%= produto.quant_esto %></td>
+					<td><%= produto.tipo_prod %></td>
+					<td><%= produto.tipo_med %></td>
+					<td><%= produto.dosagem %></td>
+					<td><%= produto.tipo_adm %></td>
+					<td><%= link_to 'Visualizar', produto %></td>
+					<td><%= link_to 'Editar', edit_produto_path(produto) %></td>
+					<td><%= link_to 'Excluir', produto, confirm: 'Tens certeza que deseja excluir este medicamento?', method: :delete %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	
+	<br />
+	<br />
+	<br />
+
+</div>
+
+<!-- ......................................................Acessório................................................ -->
+
+<br />
+<br />
+<font id='titulo_form'>Ver todos os produtos do tipo acessório:</font>
+<br />
+<br />
+<br />
+
+<div class="tabela_consulta" align="center">
+	<div class='cabeca'>	
+		<table class="cabeca_fixa">
+			<tr>
+				<th>Nome</th> <th>Preço</th> <th>Descrição</th>  <th>Quantidade em estoque</th> <th>Tipo de produto</th>  <th>Tamanho</th> <th>Tipo do acessório</th> 
+			</tr>
+		</table>
+	</div>
+	
+	<div class="scroll_movel">
+	
+		<table>
+  
+			<% Produto.find(:all, :conditions => ["tipo_prod='acessorio'"]).each do |produto| %>
+				<tr>
+					<td><%= produto.nome %></td>
+					<td><%= produto.preco %></td>
+					<td><%= produto.descricao %></td>
+					<td><%= produto.quant_esto %></td>
+					<td><%= produto.tipo_prod %></td>
+					<td><%= produto.tamanho %></td>
+					<td><%= produto.tipo_ace %></td>
+					<td><%= link_to 'Visualizar', produto %></td>
+					<td><%= link_to 'Editar', edit_produto_path(produto) %></td>
+					<td><%= link_to 'Excluir', produto, confirm: 'Tens certeza que deseja excluir este acessório?', method: :delete %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	
+	<br />
+	<br />
+	<br />
+
+</div>
+
+	<br />
+	<div align='center'><%= link_to 'Inserir novo produto', new_produto_path %></div>
+	<br />
+	<br />

@@ -1,0 +1,38 @@
+﻿<%= form_for(@administrador) do |f| %>
+  <% if @administrador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@administrador.errors.count, "erros") %> impediram que este administrador fosse salvo:</h2>
+
+      <ul>
+      <% @administrador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :nome, "Nome - " %></div>
+    <%= f.text_field :nome, :maxlength => 25 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :cpf, "CPF (apenas números) - " %></div>
+    <%= f.text_field :cpf, :maxlength => 11 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :identidade, "Identidade (apenas números) - " %></div>
+    <%= f.text_field :identidade, :maxlength => 9 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :senha, "Senha - " %></div>
+    <%= f.text_field :senha, :size => 10 %>
+  </div>
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :senha, "Confirmação da senha - " %></div>
+    <%= f.password_field :senha_confirmation, :size => 10 %>
+  </div>
+  
+  <div class="actions">
+    <input type='submit' value="Enviar" />
+  </div>
+<% end %>

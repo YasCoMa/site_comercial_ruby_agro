@@ -1,0 +1,42 @@
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "erros") %> impediram que este pedido fosse salvo:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :estado, "Estado - " %></div>
+    <%= f.select :estado, ([["Entregando","entregando"],["Fechado","fechado"] ]) %>
+  </div>
+  
+  <div style='display:none'>
+	  <div class="field">
+		<%= f.label :valor_total %><br />
+		<%= f.text_field :valor_total %>
+	  </div>
+	  
+	  <div class="field">
+		<%= f.label :cliente_id %><br />
+		<%= f.number_field :cliente_id %>
+	  </div>
+	  <div class="field">
+		<%= f.label :endereco_id %><br />
+		<%= f.number_field :endereco_id %>
+	  </div>
+	  <div class="field">
+		<%= f.label :pagamento_id %><br />
+		<%= f.number_field :pagamento_id %>
+	  </div>
+  </div>
+  
+  <div class="actions">
+    <input type='submit' value="Enviar" />
+  </div>
+<% end %>

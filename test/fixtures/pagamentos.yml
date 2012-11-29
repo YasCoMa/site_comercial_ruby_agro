@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipo: MyString
+  bandeira_card: MyString
+  nome_card: MyString
+  numero_card: MyString
+  validade_card: MyString
+  codSecure_card: MyString
+  num_parcela_card: 1
+
+two:
+  tipo: MyString
+  bandeira_card: MyString
+  nome_card: MyString
+  numero_card: MyString
+  validade_card: MyString
+  codSecure_card: MyString
+  num_parcela_card: 1

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Valor total:</b>
+  <%= @pedido.valor_total %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @pedido.estado %>
+</p>
+
+<p>
+  <b>Cliente:</b>
+  <%= @pedido.cliente_id %>
+</p>
+
+<p>
+  <b>Endereco:</b>
+  <%= @pedido.endereco_id %>
+</p>
+
+<p>
+  <b>Pagamento:</b>
+  <%= @pedido.pagamento_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %>

@@ -1,0 +1,34 @@
+﻿<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "erros") %> impediram que este item fosse salvo:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id='nome_form_campo'><%= f.label :quantidade, "Quantidade - " %></div>
+    <%= f.number_field :quantidade, :maxlength=>5, :size=>5 %>
+  </div>
+  
+	<div style='display:none'>
+		<div class="field">
+			<%= f.label :produto_id %>
+			<%= f.number_field :produto_id %>
+		</div>
+		
+		<div class="field">
+			<%= f.label :pedido_id %>
+			<%= f.number_field :pedido_id %>
+		</div>
+    </div>
+	
+  <div class="actions">
+    <input type='submit' value='Enviar' %>
+  </div>
+<% end %>

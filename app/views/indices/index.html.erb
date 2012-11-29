@@ -1,0 +1,67 @@
+﻿<% if flash[:notice]!=nil %>
+	<script>alert ('<%= flash[:notice] %>')</script>
+<% end %>
+
+<div id='titulo' align='center'>Produtos em destaque</div>
+<br />
+<br />
+<div id='promo' align='center'>
+    
+	<div id='tipo_prod'>
+		<div id='nome_tipo_prod'>Setor de alimentos</div><br />
+		
+		
+		<% @racoes.each do |alimento| %>
+		    <div id='unit'>
+				<div id='info'>Marca: </div> <div id='info2'><%= alimento.marca %></div>
+				<div id='info'>Peso: </div> <div id='info2'><%= alimento.peso %></div>
+				<div id='info'>Tipo de animal: </div> <div id='info2'><%= alimento.tipo_animal %></div>
+				<div id='info'>Preço: </div> <div id='info2'><%= alimento.preco %></div>
+				<div id='info'>Quantidade: </div> <div id='info2'><%= alimento.quant_esto %></div>
+			</div>
+		<% end %>
+		
+		<p>
+    </div>
+	
+	<br />
+	<br />
+	
+	<div id='tipo_prod'>
+		<div id='nome_tipo_prod'>Setor de medicamentos</div><br />
+		
+		
+		<% @med.each do |medicamento| %>
+		    <div id='unit'>
+				<div id='info'>Nome: </div> <div id='info2'><%= medicamento.nome %></div>
+				<div id='info'>Dosagem: </div> <div id='info2'><%= medicamento.dosagem %></div>
+				<div id='info'>Administração: </div> <div id='info2'><%= medicamento.tipo_adm %></div>
+				<div id='info'>Preço: </div> <div id='info2'><%= medicamento.preco %></div>
+				<div id='info'>Quantidade: </div> <div id='info2'><%= medicamento.quant_esto %></div>
+				
+			</div>
+		<% end %>
+		
+		<p>
+    </div>
+	
+	<br />
+	<br />
+	
+	<div id='tipo_prod'>
+		<div id='nome_tipo_prod'>Setor de acessórios</div><br />
+		
+		
+		<% @acessorio.each do |ace| %>
+		    <div id='unit'>
+				<div id='info'>Nome: </div> <div id='info2'><%= ace.nome %></div>
+				<div id='info'>Tamanho: </div> <div id='info2'><%= ace.tamanho %></div>
+				<div id='info'>Preço: </div> <div id='info2'><%= ace.preco %></div>
+				<div id='info'>Tipo de acessório: </div> <div id='info2'><%= ace.tipo_ace %></div>
+				<div id='info'>Quantidade: </div> <div id='info2'><%= ace.quant_esto %></div>
+			</div>
+		<% end %>
+		
+		<p>
+    </div>
+<div>
